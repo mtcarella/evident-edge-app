@@ -1,6 +1,31 @@
 import hashlib
 import streamlit as st
 
+# --- Login credentials ---
+CREDENTIALS = {
+    "evidentadmin": "securepass123",
+    "salesrep": "edge2024"
+}
+
+def login():
+    st.title("🔒 Login Required")
+    with st.form("login_form"):
+        username = st.text_input("Username")
+        password = st.text_input("Password", type="password")
+        submitted = st.form_submit_button("Login")
+
+    if submitted:
+        if username in CREDENTIALS and CREDENTIALS[username] == password:
+            st.session_state["authenticated"] = True
+        else:
+            st.error("❌ Invalid credentials")
+
+# --- Login Gate ---
+if "authenticated" not in st.session_state or not st.session_state["authenticated"]:
+    login()
+    st.stop()
+
+
 # Custom CSS to apply brand colors
 st.markdown("""
     <style>
