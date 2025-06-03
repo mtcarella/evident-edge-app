@@ -3,8 +3,8 @@ import streamlit as st
 
 # --- Login credentials ---
 CREDENTIALS = {
-    "evidentadmin": "securepass123",
-    "salesrep": "edge2024"
+    "mtcarella": "Absolut98!",
+    "admin": "testtest"
 }
 
 def login():
